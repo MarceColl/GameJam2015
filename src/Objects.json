@@ -20,7 +20,7 @@
             "otherwise": "none"
         },
         {
-            "stab": "stab",
+            "name": "stab",
             "clean": "stained",
             "otehrwise": "none"
         }

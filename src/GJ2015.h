@@ -12,10 +12,8 @@ public:
     void init();
     void update(float deltaTime);
     void draw();
-    
+
     void processEvents();
-    void keyPressed(sf::Event event);
-    void keyReleased(sf::Event event);    sf::RenderWindow* getWindow();
 private:
     std::list<Object*> objects;
 
