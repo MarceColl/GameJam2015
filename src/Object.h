@@ -46,10 +46,7 @@ public:
 
     void actsOn(Object* b);
 
-
-    addInteraction(DoesInteract di);
-
-    addInteraction(RecievesInteract ri);
+	setPosition(sf::Vector2f pos);
 
     setObjectName(std::string nom);
 
@@ -62,7 +59,12 @@ public:
     setIsMovable(bool isMov);
 
     setInitStates(std::vector<std::string> ei);
+	
     setPossibleStates(std::vector<std::vector<std::string> > ps);
+
+    addInteraction(DoesInteract di);
+
+    addInteraction(RecievesInteract ri);
 
 private:
 
@@ -79,6 +81,7 @@ private:
     bool isMovable
 
     std::vector<std::string> initStates;
+	
     std::vector<std::vector<std::string> > possibleStates;
 
     std::map<std::string,DoesInteract> interactionsAvailable;
