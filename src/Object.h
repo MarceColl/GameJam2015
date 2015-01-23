@@ -88,25 +88,6 @@ public:
 private:
 
 
-    std::string objectName;
-
-    bool inObject;
-    std::string locationInObject;
-
-    Size objectSize;
-
-    bool isContainer;
-
-    bool isMovable
-
-    std::vector<std::string> initStates;
-	
-    std::vector<std::vector<std::string> > possibleStates;
-
-    std::map<std::string,DoesInteract> interactionsAvailable;
-
-    std::map<std::string,RecievesInteract> interactionsRecievable;
-
 
 };
 
