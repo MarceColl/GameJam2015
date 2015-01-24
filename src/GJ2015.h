@@ -4,6 +4,7 @@
 #include "Object.h"
 #include "Body.h"
 #include "Environment.h"
+#include "Player.h"
 #include <string>
 #include <list>
 
@@ -25,7 +26,8 @@ private:
     float timer;
 
     Environment env;
-
+    Player player;
+    
     bool parseObjectsFile();
 };
 

@@ -13,7 +13,8 @@ const double TIMER_START = 60 * 5;
 
 GJ2015::GJ2015(int scrwidth, int scrheight, std::string title, int style)
     :   Game(scrwidth, scrheight, title, style), 
-        env(&window) {
+        env(&window), player(&window) {
+
     srand (time(NULL));
     init();
     timer = TIMER_START;
@@ -69,10 +70,12 @@ bool GJ2015::parseObjectsFile()
 
 void GJ2015::update(float deltaTime) {
     timer -= deltaTime;
+    player.update(deltaTime);
 }
 
 void GJ2015::draw() {
     env.draw();
+    player.draw();
     sf::Text text;
     text.setFont(Resources::menuFont);
     text.setString(std::to_string(timer));
@@ -89,6 +92,9 @@ void GJ2015::processEvents() {
         case sf::Event::Closed:
             window.close();
             break;
+        case sf::Event::MouseButtonPressed:
+            if(event.mouseButton.button == sf::Mouse::Left)
+                player.moveTo(event.mouseButton.x);
         default:
             break;
         }
