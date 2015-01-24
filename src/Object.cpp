@@ -1,13 +1,16 @@
 #include "Object.h"
 #include <SFML/Graphics.hpp>
 
-Object::Object(const rapidjson::GenericValue<rapidjson::UTF8<> >** d)
+Object::Object(const rapidjson::GenericValue<rapidjson::UTF8<> >* d)
 {
+    std::cout << "OBJECT, YO!" << std::endl;
     // POINTER HAXURS
-    objectName = (**d)["name"].GetString();
-    objectSize = (**d)["size"].GetString() == "small" ? SMALL : BIG;
-    isContainer = (**d)["is_container"].GetBool();
-    isMovable = (**d)["is_movable"].GetBool();
+    objectName = (*d)["nom"].GetString();
+    objectSize = (*d)["size"].GetString() == "small" ? SMALL : BIG;
+    isContainer = (*d)["is_container"].GetBool();
+    isMovable = (*d)["is_movable"].GetBool();
+
+    std::cout << objectName << std::endl << objectSize << std::endl << isContainer << std::endl << isMovable << std::endl;
 }
 
 void Object::setPosition(sf::Vector2f pos) {

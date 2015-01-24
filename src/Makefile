@@ -1,17 +1,19 @@
 
 CC=g++
+LIBS=-lsfml-graphics -lsfml-window -lsfml-system
 
-all: GJ2015 Object Game 
-	$(CC) main.cpp Game.o GJ2015.o Object.o -o GJ2015 -lsfml-graphics -lsfml-window -lsfml-system
+all: GJ2015.o Object.o Game.o main.cpp
+	$(CC) main.cpp Game.o GJ2015.o Object.o -o GJ2015 $(LIBS)
 
-Game: Game.h Game.cpp
-	$(CC) -c Game.cpp
+Game: Game.cpp
+	$(CC) -c Game.cpp -o Game.o
 
-GJ2015: GJ2015.h GJ2015.cpp
-	$(CC) -c GJ2015.cpp
+GJ2015: GJ2015.cpp
+	$(CC) -c GJ2015.cpp -o GJ2015.o
 
-Object: Object.h Object.cpp
-	$(CC) -c Object.cpp
+Object: Object.cpp
+	$(CC) -c Object.cpp -o Object.o
 
 clean:
 	rm *.o
+	rm GJ2015
