@@ -81,9 +81,7 @@ public:
 	bool canInteractWithAction(std::string act);
 	
 	void applyInteraction(std::string act);
-	
-	GameEvaler evaluarObjecte(bool onCorpse,bool onCharacter);
-	
+
 private:
     void addInteraction(DoesInteract di);
     void addInteraction(RecievesInteract ri);
