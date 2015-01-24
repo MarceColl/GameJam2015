@@ -59,7 +59,6 @@ public:
     bool isMovable;
     bool inObject;
 	
-    
     std::string locationInObject;
     std::string objectName;
 
@@ -77,20 +76,15 @@ public:
     void actsOn(Object* b);
 
 	void setPosition(sf::Vector2f pos);
-    void setObjectName(std::string nom);
     void setLocationInObject(std::string obj);
-    void setObjectSize(Size s);
-    void setIsContainer(bool isCont);
-    void setIsMovable(bool isMov);
-    void setInitStates(std::vector<std::string> ei);
-    void setPossibleStates(std::vector<std::string> ps);
-
-    void addInteraction(DoesInteract di);
-    void addInteraction(RecievesInteract ri);
 	
 	bool canInteractWithAction(std::string act);
 	
 	void applyInteraction(std::string act);
+
+private:
+    void addInteraction(DoesInteract di);
+    void addInteraction(RecievesInteract ri);
 };
 
 #endif // OBJECT_HPP

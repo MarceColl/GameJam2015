@@ -118,33 +118,9 @@ Object::Object(const rapidjson::GenericValue<rapidjson::UTF8<> >* d)
 void Object::setPosition(sf::Vector2f pos) {
 	position = pos;	
 }
-
-void Object::setObjectName(std::string nom) {
-	objectName = nom;	
-}
    
 void Object::setLocationInObject(std::string obj) {
 	inObject = true;
-}
-
-void Object::setObjectSize(Size s) {
-	objectSize = s;
-}
-
-void Object::setIsContainer(bool isCont) {
-	isContainer = isCont;
-}
-
-void Object::setIsMovable(bool isMov) {
-	isMovable = isMov;
-}
-
-void Object::setInitStates(std::vector<std::string> ei) {
-	initStates = ei;
-}
-
-void Object::setPossibleStates(std::vector<std::string> ps) {
-	possibleStates = ps;
 }
 
 void Object::addInteraction(DoesInteract di) {

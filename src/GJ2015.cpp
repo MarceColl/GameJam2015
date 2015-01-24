@@ -1,5 +1,6 @@
 #include "GJ2015.h"
 #include "Object.h"
+#include "Body.h"
 #include <fstream>
 
 #include "include/rapidjson/document.h"
@@ -39,8 +40,14 @@ bool GJ2015::parseObjectsFile()
 
         const rapidjson::Value& objectsJSON = d["objects"];
         for (rapidjson::Value::ConstValueIterator itr = objectsJSON.Begin(); itr != objectsJSON.End(); ++itr) {
-            Object* ob = new Object(itr);
-            objects.push_back(ob);
+            
+            if (strncmp((*itr)["nom"].GetString(), "body", 4) == 0) {
+                body = new Body(itr);
+            } else {
+                Object* ob;
+                ob = new Object(itr);
+                objects.push_back(ob);
+            }
         }
     }
     else
