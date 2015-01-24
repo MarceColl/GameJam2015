@@ -2,6 +2,7 @@
 #define MYGAME_H
 #include "Game.h"
 #include "Object.h"
+#include "Body.h"
 #include <string>
 #include <list>
 
@@ -18,6 +19,8 @@ public:
     void processEvents();
 private:
     std::list<Object*> objects;
+
+    Body* body;
 
     bool parseObjectsFile();
 };

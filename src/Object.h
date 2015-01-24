@@ -9,14 +9,6 @@
 
 enum Size { BIG, SMALL };
 
-Struct GameEvaler{
-	int puntsHomicidiJo;
-	int puntsHomicidiIncrim;
-	int puntsSuicidi;
-	int puntsAccident;
-	int puntsFuga;
-}
-
 struct StateChange{
     std::string initState;
     std::string finalState;
@@ -67,7 +59,6 @@ public:
     bool isMovable;
     bool inObject;
 	
-    
     std::string locationInObject;
     std::string objectName;
 
@@ -85,16 +76,7 @@ public:
     void actsOn(Object* b);
 
 	void setPosition(sf::Vector2f pos);
-    void setObjectName(std::string nom);
     void setLocationInObject(std::string obj);
-    void setObjectSize(Size s);
-    void setIsContainer(bool isCont);
-    void setIsMovable(bool isMov);
-    void setInitStates(std::vector<std::string> ei);
-    void setPossibleStates(std::vector<std::string> ps);
-
-    void addInteraction(DoesInteract di);
-    void addInteraction(RecievesInteract ri);
 	
 	bool canInteractWithAction(std::string act);
 	
@@ -102,6 +84,9 @@ public:
 	
 	GameEvaler evaluarObjecte(bool onCorpse,bool onCharacter);
 	
+private:
+    void addInteraction(DoesInteract di);
+    void addInteraction(RecievesInteract ri);
 };
 
 #endif // OBJECT_HPP
