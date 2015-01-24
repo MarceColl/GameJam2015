@@ -5,7 +5,7 @@
 Environment::Environment(sf::RenderWindow *wndw) :
         texRoom1(Resources::room1Text), 
         texRoom2(Resources::room2Text) {
-    currentRoom = 2;
+    currentRoom = 1;
     window = wndw;
     spriteRoom1.setTexture(texRoom1);
     spriteRoom1.setPosition(0, 0);

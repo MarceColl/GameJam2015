@@ -7,6 +7,8 @@
 
 #include "Resources.h"
 
+#include <iostream>
+
 const float MOVESPEED = 350;
 
 class Player {
@@ -22,6 +24,7 @@ private:
 
     float speed;
     float target;
+    float ChangeTimer;
 
     sf::Vector2f position;
     sf::Vector2f size;
