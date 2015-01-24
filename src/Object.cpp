@@ -113,7 +113,6 @@ Object::Object(const rapidjson::GenericValue<rapidjson::UTF8<> >* d)
             }
         }
     }
-    
 }
 
 void Object::setPosition(sf::Vector2f pos) {
