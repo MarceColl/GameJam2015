@@ -18,7 +18,7 @@ private:
     sf::Vector2f size;
     sf::Texture& texRoom1;
     sf::Texture& texRoom2;
-    //sf::Texture& texRoom3;
+    sf::Texture& texRoom3;
     sf::Sprite spriteRoom1;
     sf::Sprite spriteRoom2;
     sf::Sprite spriteRoom3;
