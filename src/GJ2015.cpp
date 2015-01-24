@@ -30,9 +30,11 @@ bool GJ2015::parseObjectsFile()
     std::streamsize size = file.tellg();
     file.seekg(0, std::ios::beg);
 
-    char* buffer = new char[size];
+    char* buffer = new char[size + 1];
+    buffer[size] = '\0';
     if (file.read(buffer, size))
     {
+        std::cout << buffer << std::endl;
         rapidjson::Document d;
         d.Parse(buffer);
 
