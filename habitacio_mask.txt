@@ -1,0 +1,13 @@
+FF0000: calaixera
+7875cc: caixa 3
+a3cc55: caixa 2
+cc6673: caixa 1
+0000FF: llit
+00ff00: quadres
+00ffff: lampara
+ffff00: tauleta de nit
+ff00ff: penjador
+aaff00: despertador
+aaaa00: armari
+8800FF: porta
+880000: finestra

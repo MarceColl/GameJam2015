@@ -61,7 +61,6 @@ bool Object::canInteractWithAction(std::string act) {
 }
 
 void Object::applyInteraction(std::string action) {
-
     RecievesInteract act = interactionsRecievable[action];
 	
 	std::vector<StateChange> modificacions= act.canvisEstat;
@@ -77,6 +76,5 @@ void Object::applyInteraction(std::string action) {
 			}
 		}*/
 	}
-	
 }
 
