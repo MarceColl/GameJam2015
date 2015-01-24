@@ -62,4 +62,24 @@ void addInteraction(RecievesInteract ri){
 	interactionsRecievable.insert( std::pair<std::string ,DoesInteract>(ri.name,ri));
 }
 
+bool canInteractWithAction(std::sting act){
+	return (interactionsRecievable.count(act)!=0);
+}
+
+void applyInteraction(std::sting action){
+
+	RecievesInteract act = interactionsRecievable.get(action);
+	
+	std::vector<StateChange> modificacions= act.canvisEstat;
+	
+	for (std::vector<StateChange>::iterator it = modificacions.begin(); it != modificacions.end(); ++it){
+		
+		
+	
+	}
+	
+	
+	
+
+}
 

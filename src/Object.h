@@ -45,26 +45,6 @@ public:
     void draw();
 
     void actsOn(Object* b);
-
-	setPosition(sf::Vector2f pos);
-
-    setObjectName(std::string nom);
-
-    setLocationInObject(string obj);
-
-    setObjectSize(Size s);
-
-    setIsContainer(bool isCont);
-
-    setIsMovable(bool isMov);
-
-    setInitStates(std::vector<std::string> ei);
-	
-    setPossibleStates(std::vector<std::vector<std::string> > ps);
-
-    addInteraction(DoesInteract di);
-
-    addInteraction(RecievesInteract ri);
 	
     std::string objectName;
 
@@ -84,6 +64,31 @@ public:
     std::map<std::string,DoesInteract> interactionsAvailable;
 
     std::map<std::string,RecievesInteract> interactionsRecievable;
+
+	void setPosition(sf::Vector2f pos);
+
+    void setObjectName(std::string nom);
+
+    void setLocationInObject(string obj);
+
+    void setObjectSize(Size s);
+
+    void setIsContainer(bool isCont);
+
+    void setIsMovable(bool isMov);
+
+    void setInitStates(std::vector<std::string> ei);
+	
+    void setPossibleStates(std::vector<std::vector<std::string> > ps);
+
+    void addInteraction(DoesInteract di);
+
+    void addInteraction(RecievesInteract ri);
+	
+	bool canInteractWithAction(std::sting act);
+	
+	void applyInteraction(std::sting act);
+	
 
 private:
 
