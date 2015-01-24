@@ -9,6 +9,14 @@
 
 enum Size { BIG, SMALL };
 
+Struct GameEvaler{
+	int puntsHomicidiJo;
+	int puntsHomicidiIncrim;
+	int puntsSuicidi;
+	int puntsAccident;
+	int puntsFuga;
+}
+
 struct StateChange{
     std::string initState;
     std::string finalState;
@@ -91,6 +99,9 @@ public:
 	bool canInteractWithAction(std::string act);
 	
 	void applyInteraction(std::string act);
+	
+	GameEvaler evaluarObjecte(bool onCorpse,bool onCharacter);
+	
 };
 
 #endif // OBJECT_HPP
