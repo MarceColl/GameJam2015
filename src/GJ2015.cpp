@@ -36,7 +36,6 @@ bool GJ2015::parseObjectsFile() {
         d.Parse(buffer);
 
         const rapidjson::Value& objectsJSON = d["objects"];
-        std::cout << "HOLA" << std::endl;
         for (rapidjson::Value::ConstValueIterator itr = objectsJSON.Begin(); itr != objectsJSON.End(); ++itr) {
             Object* ob = new Object(itr);
             objects.push_back(ob);

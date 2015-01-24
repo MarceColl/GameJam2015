@@ -1,17 +1,51 @@
 {
     "objects": [{
-        "nom": "Scissors",
+        "nom": "body",
         "location": "",
-        "size": "small",
+        "size": "big",
         "is_container": true,
         "is_movable": true,
         "states": [
-            ["clean", "stained"],
-            ["open", "close"]
+            ["normal", "chopped", "stabbed", "shot", "stabbed-shot", "hit", "poisoned"]
         ],
         "initial_state": [
-            "clean",
-            "closed"
+            "normal"
+        ],
+        "actions-object": [
+        ],
+        "actions-received": [
+            {
+                "name": "cut",
+                "any": "chopped"
+            },
+            {
+                "name": "stab",
+                "chopped": "chopped",
+                "shot": "stabbed-shot",
+                "stabbed-shot": "stabbed-shot",
+                "otherwise": "stabbed"
+            },
+            {
+                "name": "poison",
+                "chopped": "chopped",
+                "stabbed": "stabbed",
+                "shot": "shot",
+                "stabbed-shot": "stabbed-shot",
+                "otherwise": "poisoned"
+            }
+        ]
+    },
+    {
+        "nom": "Scissors",
+        "location": "",
+        "size": "small",
+        "is_container": false,
+        "is_movable": true,
+        "states": [
+            ["clean", "stained"]
+        ],
+        "initial_state": [
+            "clean"
         ],
         "actions-object": [
             {
@@ -35,38 +69,53 @@
         ]
     },
     {
-        "nom": "LAMO",
+        "nom": "Bag",
         "location": "",
-        "size": "small",
+        "size": "big",
         "is_container": true,
         "is_movable": true,
         "states": [
-            ["clean", "stained"],
-            ["open", "close"]
+            ["empty", "full"]
         ],
         "initial_state": [
-            "clean",
-            "closed"
+            "empty"
         ],
         "actions-object": [
             {
-                "name": "cut",
+                "name": "fill",
                 "modifer": "body",
-                "clean": "stained",
+                "empty": "full",
                 "otherwise": "none"
             },
             {
-                "name": "stab",
-                "clean": "stained",
+                "name": "empty",
+                "full": "empty",
                 "otehrwise": "none"
             }
         ],
         "actions-received": [
+        ]
+    },
+    {
+        "nom": "Drugs",
+        "location": "",
+        "size": "small",
+        "is_container": false,
+        "is_movable": true,
+        "states": [
+            ["empty", "full"]
+        ],
+        "initial_state": [
+            "full"
+        ],
+        "actions-object": [
             {
-                "name": "clean",
-                "stained": "clean",
-                "otherwise": "none"
+                "name": "empty",
+                "full": "empty",
+                "otehrwise": "none"
             }
+        ],
+        "actions-received": [
         ]
     }]
 }

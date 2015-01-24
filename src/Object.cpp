@@ -17,6 +17,11 @@ Object::Object(const rapidjson::GenericValue<rapidjson::UTF8<> >* d)
         }
     }
     
+    const rapidjson::Value& actions_object = (*d)["actions-object"];
+    for (rapidjson::Value::ConstValueIterator itr = actions_object.Begin(); itr != actions_object.End(); ++itr) {
+        rapidjson::Value::ConstMemberIterator cmi = (*itr).FindMember("")
+
+    }
 
     std::cout << objectName << std::endl << objectSize << std::endl << isContainer << std::endl << isMovable << std::endl;
 }
@@ -68,7 +73,7 @@ bool Object::canInteractWithAction(std::string act) {
 void Object::applyInteraction(std::string action) {
     RecievesInteract act = interactionsRecievable[action];
 	
-	std::vector<StateChange> modificacions= act.canvisEstat;
+	std::vector<StateChange> modificacions = act.canvisEstat;
 	
 	for (std::vector<StateChange>::iterator it = modificacions.begin(); it != modificacions.end(); ++it){
 		std::string initS=it->initState;
