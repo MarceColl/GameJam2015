@@ -71,6 +71,5 @@ RecievesInteract act = interactionsRecievable.get(action);
 			}
 		}
 	}
-	
 }
 
