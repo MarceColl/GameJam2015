@@ -15,7 +15,7 @@ Body::Body(const rapidjson::GenericValue<rapidjson::UTF8<> >**){
 
 }
 
-bool doesKillMatter(){
+bool Body::doesKillMatter(){
 	
 	if(eInicial==eFinal||desaparegut){
 		return false;
@@ -65,7 +65,7 @@ bool doesKillMatter(){
 	return true;
 }
 
-void doesBodyMatter(){
+void Body::doesBodyMatter(){
 
 	if(!doesKillMatter()){
 	
@@ -99,7 +99,7 @@ void doesBodyMatter(){
 
 }
 
-void assignarFinalState(){
+void Body::assignarFinalState(){
 	std::string estat=initstates.front();
 	if(estat="normal"){
 		eFinal=FinalState.FS_ASFIXIA;
