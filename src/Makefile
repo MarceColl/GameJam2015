@@ -2,11 +2,14 @@
 CC=g++
 LIBS=-lsfml-graphics -lsfml-window -lsfml-system
 
-all: GJ2015.o Object.o Game.o Body.o Resources.o Environment.o main.cpp 
-	$(CC) main.cpp Game.o GJ2015.o Object.o Resources.o Body.o Environment.o -o GJ2015 $(LIBS)
+all: GJ2015.o Object.o Game.o Body.o Resources.o Player.o Environment.o main.cpp 
+	$(CC) main.cpp Game.o GJ2015.o Object.o Resources.o Player.o Body.o Environment.o -o GJ2015 $(LIBS)
 
 Resources: Resources.cpp
 	$(CC) -c Resources.cpp -o Resources.o
+
+Player: Player.cpp
+	$(CC) -c Player.cpp -o Player.o
 
 Environment: Environment.cpp
 	$(CC) -c Environment.cpp -o Environment.o
