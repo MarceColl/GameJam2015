@@ -7,7 +7,7 @@ Body::Body(const rapidjson::GenericValue<rapidjson::UTF8<> >**){
 	
 	
 	
-	//
+	//falta parsejar i actualitzar
 	
 	eCos=init;
 	objectName="body";
@@ -100,8 +100,25 @@ void doesBodyMatter(){
 }
 
 void assignarFinalState(){
-
-
-
+	std::string estat=initstates.front();
+	if(estat="normal"){
+		eFinal=FinalState.FS_ASFIXIA;
+	}else if(estat="chopped"){
+		eFinal=FinalState.FS_ABLANCA;
+	}else if(estat="stabbed"){
+		eFinal=FinalState.FS_ABLANCA;
+	}else if(estat="shot"){
+		eFinal=FinalState.FS_AFOC;
+	}else if(estat="stabbed-shot"){
+		if(eInicial==FinalState.IS_ABLANCA){
+			eFinal=FinalState.FS_ABLANCA;
+		}else {
+			eFinal=FinalState.FS_AFOC;
+		}
+	}else if(estat="hit"){
+		eFinal=FinalState.FS_ACONTUNDENT;
+	}else if(estat="poison"){
+		eFinal=FinalState.FS_INTOXICAT;
+	}
 }
 
