@@ -1,0 +1,10 @@
+0000FF: finestra
+00FF00: estanteria
+00FFFF: armari
+FF0000: llit
+FF00FF: lampara
+FFFF00: porta
+BB00FF: calaixera (costat porta)
+11AA00: cofre
+FFAA00: TAULETA DE NIT
+BBAA00: poster P4
