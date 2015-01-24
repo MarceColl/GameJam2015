@@ -2,6 +2,7 @@
 #define MYGAME_H
 #include "Game.hpp"
 #include "Object.h"
+#include <string>
 
 class Object;
 class GJ2015 : public Game {
@@ -17,7 +18,7 @@ public:
 private:
     std::list<Object*> objects;
 
-    struct ObjectJSONHandler;
+    bool parseObjectsFile();
 };
 
 #endif // MYGAME_H

@@ -1,4 +1,4 @@
-{
+"objects" : [{
     "nom": "Scissors",
     "location": "",
     "size": "small",
@@ -32,4 +32,4 @@
             "otherwise": "none"
         }
     ]
-}
+}]
