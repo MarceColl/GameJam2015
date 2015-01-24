@@ -2,7 +2,7 @@
 CC=g++
 LIBS=-lsfml-graphics -lsfml-window -lsfml-system
 
-all: GJ2015.o Object.o Game.o main.cpp
+all: GJ2015.o Object.o Game.o main.cpp 
 	$(CC) main.cpp Game.o GJ2015.o Object.o -o GJ2015 $(LIBS)
 
 Game: Game.cpp
