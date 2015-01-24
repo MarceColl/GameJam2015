@@ -46,6 +46,8 @@ class Object
 public:
     Object(const rapidjson::GenericValue<rapidjson::UTF8<> >* d);
 
+    int id;
+
     sf::Vector2f position;
     sf::Vector2f size;
     //sf::Texture& tex;

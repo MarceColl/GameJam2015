@@ -4,6 +4,7 @@
 Object::Object(const rapidjson::GenericValue<rapidjson::UTF8<> >* d)
 {
     // POINTER HAXURS
+    id = (*d)["id"].GetInt();
     objectName = (*d)["nom"].GetString();
     objectSize = strncmp((*d)["size"].GetString(), "small", 5) == 0 ? SMALL : BIG;
     isContainer = (*d)["is_container"].GetBool();
