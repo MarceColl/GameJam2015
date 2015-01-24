@@ -16,7 +16,7 @@ void Judge::evaluarCrim(){
 	
 	Body* body;
 	
-	bool onBody;
+	bool onCorpse;
 	bool onCharacter;
 	
 	int puntsHomicidi=0;
@@ -26,34 +26,30 @@ void Judge::evaluarCrim(){
 		Objecte* item=it*;
 		
 		//evaluar objecte
-		if(it->objectName!="body"){
-			
-			
-			
 		
-		//onBody=GJ2015.isObjectOnBody(object*)
+		//onCorpse=GJ2015.isObjectOnBody(object*)
 		//onCharacter=GJ2015.isObjectOnCharacter(object*)
 		
-		
-		
-			int punts [6] = item->evaluarObjecte(onBody,onCharacter);//HOMICIDI SUICIDI ACCIDENT FUGA INCRIMINAR
-			
-			puntsHomicidiJo=puntsHomicidiJo+punts[0];
-			puntsHomicidiIncrim=puntsHomicidiIncrim+punts[0];
-			if(puntsHomicidiIncrim<puntsHomicidiJo){
-				puntsHomicidi=puntsHomicidiJo;
-				incriminat=false;
-			}else{
-				incriminat=true;			
-			}
-			puntsSuicidi=puntsSuicidi+punts[2];
-			puntsAccident=puntsAccident+punts[3];
-			puntsFuga=puntsFuga+punts[4];
-			
-			puntsIncriminar=puntsIncriminar+punts[5];
-		
-		
+		if(it->objectName=="body"){
+			desaparegut=onCharacter;
 		}
+		
+		int punts [6] = item->evaluarObjecte(onCorpse,onCharacter);//HOMICIDI SUICIDI ACCIDENT FUGA INCRIMINAR
+		
+		puntsHomicidiJo=puntsHomicidiJo+punts[0];
+		puntsHomicidiIncrim=puntsHomicidiIncrim+punts[0];
+		if(puntsHomicidiIncrim<puntsHomicidiJo){
+			puntsHomicidi=puntsHomicidiJo;
+			incriminat=false;
+		}else{
+			puntsHomicidi=puntsHomicidiIncrim;
+			incriminat=true;			
+		}
+		puntsSuicidi=puntsSuicidi+punts[2];
+		puntsAccident=puntsAccident+punts[3];
+		puntsFuga=puntsFuga+punts[4];
+		
+		puntsIncriminar=puntsIncriminar+punts[5];
 		
 	}
 	
@@ -61,28 +57,34 @@ void Judge::evaluarCrim(){
 	
 	if(desaparegut>0){
         if(puntsFuga>0){
-
+			veredicte=Veredicte.DESAPAREGUT
             cout<<"DESAPAREGUT"<<endl;
 
 		}else{
             if(incriminat){
-            cout<<"HAS INCRIMINAT"<<endl;
+				veredicte=Veredicte.INCRIMINA_HOMICIDI;
+                cout<<"INCRIMINA_HOMICIDI"<<endl;
             }else{
-            cout<<"CULPABLE"<<endl;
+				veredicte=Veredicte.JUGADOR_HOMICIDI;
+                cout<<"JUGADOR_HOMICIDI"<<endl;
             }
 		}
 	}else{
         if((puntsAccident+puntsSuicidi)>puntsHomicidi){
             if(puntsAccident>puntsSuicidi){
+				veredicte=Veredicte.ACCIDENT;
                 cout<<"ACCIDENT"<<endl;
             }else{
+				veredicte=Veredicte.SUICIDI;
                 cout<<"SUICIDI"<<endl;
             }
         }else{
             if(incrimina>0){
-            cout<<"HAS INCRIMINAT"<<endl;
+				veredicte=Veredicte.INCRIMINA_HOMICIDI;
+				cout<<"INCRIMINA_HOMICIDI"<<endl;
             }else{
-            cout<<"CULPABLE"<<endl;
+				veredicte=Veredicte.JUGADOR_HOMICIDI;
+				cout<<"JUGADOR_HOMICIDI"<<endl;
             }
         }
 	}
