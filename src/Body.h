@@ -7,23 +7,28 @@
 
 enum InitialState {IS_ASFIXIA,IS_ABLANCA,IS_AFOC,IS_ACONTUNDENT};
 
-enum FinalState {FS_ASFIXIA,FS_ABLANCA,FS_AFOC,FS_ACONTUNDENT,FS_INTOXICAT,FS_DESAPAREGUT};
+enum FinalState {FS_ASFIXIA,FS_ABLANCA,FS_AFOC,FS_ACONTUNDENT,FS_INTOXICAT};
 
 enum BodyState {NORMAL,APUNYALAT,DISPARAT,COLPEJAT,APUNYALAT_DISPARAT,ESQUARTERAT}
 
-class Boddy : Object {
+class Body : Object {
 
+public:
+	Body(const rapidjson::GenericValue<rapidjson::UTF8<> >**);
+	
 	InitialState eInicial;
+	
+	bool desaparegut;
 	
 	FinalState eFinal;
 	
 	BodyState eCos;
 	
-	Body(InitialState init);
-	
 	bool doesKillMatter();
 	
 	bool doesBodyMatter();
+	
+	void assignarFinalState();
 
 }
 #endif
