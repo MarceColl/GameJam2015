@@ -1,8 +1,9 @@
 #ifndef MYGAME_H
 #define MYGAME_H
-#include "Game.hpp"
+#include "Game.h"
 #include "Object.h"
 #include <string>
+#include <list>
 
 class Object;
 class GJ2015 : public Game {

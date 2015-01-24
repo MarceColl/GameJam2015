@@ -1,7 +1,9 @@
-#include "GJ2015.hpp"
-#include "Object.hpp"
+#include "GJ2015.h"
+#include "Object.h"
+#include <fstream>
 
 #include "include/rapidjson/document.h"
+#include "include/SFML/Graphics.hpp"
 
 GJ2015::GJ2015(int scrwidth, int scrheight, std::string title, int style)
     : Game(scrwidth,scrheight,title,style) {
@@ -33,7 +35,7 @@ bool GJ2015::parseObjectsFile() {
         d.Parse(buffer);
 
         const rapidjson::Value& objectsJSON = d["objects"];
-        for (Value::ConstValueIterator itr = objectsJSON.Begin(); itr != objectsJSON.End(); ++itr) {
+        for (rapidjson::Value::ConstValueIterator itr = objectsJSON.Begin(); itr != objectsJSON.End(); ++itr) {
             Object* ob = new Object(&itr);
             objects.push_back(ob);
         }
@@ -57,26 +59,5 @@ void GJ2015::draw(){
 }
 
 void GJ2015::processEvents(){
-    sf::Event event;
-    while (window.pollEvent(event)) {
-        switch (event.type) {
-            case sf::Event::Closed:
-                window.close();
-                break;
-            case sf::Event::KeyPressed:
-                if (gameState == playing) keyPressed(event);
-                else ui.setKeyPressed(event.key.code);
-                break;
-            case sf::Event::KeyReleased:
-                if (gameState == playing) keyReleased(event);
-                break;
-            default:
-                break;
-        }
-    }
-}
-
-sf::RenderWindow* GJ2015::getWindow() {
-    return &window;
 }
 

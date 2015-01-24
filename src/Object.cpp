@@ -1,85 +1,59 @@
 #include "Object.h"
+#include <SFML/Graphics.hpp>
 
-Object::Object()
+Object::Object(const rapidjson::GenericValue<rapidjson::UTF8<> >** d)
 {
-    inObject=false;
-    objectSize=Size.SMALL;
-
+    // POINTER HAXURS
+    objectName = (**d)["name"].GetString();
+    objectSize = (**d)["size"].GetString() == "small" ? SMALL : BIG;
+    isContainer = (**d)["is_container"].GetBool();
+    isMovable = (**d)["is_movable"].GetBool();
 }
 
-Object::Object(string name)
-{
-    objectName=name;
-
-    inObject=false;
-    objectSize=Size.SMALL;
-
+void Object::setPosition(sf::Vector2f pos) {
+	position = pos;	
 }
 
-Object::~Object()
-{
-    //dtor
-}
-
-void setPosition(sf::Vector2f pos){
-	position=pos;	
-}
-
-void setObjectName(std::string nom){
-	objectName=name;	
+void Object::setObjectName(std::string nom) {
+	objectName = nom;	
 }
    
-void  setLocationInObject(std::string obj){
-	inObject=true;
+void Object::setLocationInObject(std::string obj) {
+	inObject = true;
 }
 
-void setObjectSize(Size s){
-	objectSize=s;
+void Object::setObjectSize(Size s) {
+	objectSize = s;
 }
 
-void setIsContainer(bool isCont){
-	isContainer=isCont;
+void Object::setIsContainer(bool isCont) {
+	isContainer = isCont;
 }
 
-void setIsMovable(bool isMov){
-	isMovable=isMov;
+void Object::setIsMovable(bool isMov) {
+	isMovable = isMov;
 }
 
-void setInitStates(std::vector<std::string> ei){
-	initStates=ei;
+void Object::setInitStates(std::vector<std::string> ei) {
+	initStates = ei;
 }
 
-void setPossibleStates(std::vector<std::vector<std::string> > ps){
-	possibleStates=ps;
+void Object::setPossibleStates(std::vector<std::vector<std::string> > ps) {
+	possibleStates = ps;
 }
 
-void addInteraction(DoesInteract di){
-	interactionsAvailable.insert(std::pair<std::string,DoesInteract>(di.name,di));
+void Object::addInteraction(DoesInteract di) {
+	interactionsAvailable.insert(std::pair<std::string, DoesInteract>(di.name, di));
 }
 
-void addInteraction(RecievesInteract ri){
-
-	interactionsRecievable.insert( std::pair<std::string ,DoesInteract>(ri.name,ri));
+void Object::addInteraction(RecievesInteract ri) {
+	interactionsRecievable.insert(std::pair<std::string, RecievesInteract>(ri.name, ri));
 }
 
-bool canInteractWithAction(std::sting act){
-	return (interactionsRecievable.count(act)!=0);
+bool Object::canInteractWithAction(std::string act) {
+	return (interactionsRecievable.count(act) != 0);
 }
 
-void applyInteraction(std::sting action){
-
-	RecievesInteract act = interactionsRecievable.get(action);
-	
-	std::vector<StateChange> modificacions= act.canvisEstat;
-	
-	for (std::vector<StateChange>::iterator it = modificacions.begin(); it != modificacions.end(); ++it){
-		
-		
-	
-	}
-	
-	
-	
-
+void Object::applyInteraction(std::string action) {
 }
 

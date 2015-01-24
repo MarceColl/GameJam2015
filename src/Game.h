@@ -1,7 +1,8 @@
 #ifndef GAME_H
 #define GAME_H
 
-#include "utils.hpp"
+#include <string>
+#include "include/SFML/Graphics.hpp"
 
 class Game {
 public:

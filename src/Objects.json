@@ -1,35 +1,72 @@
-"objects" : [{
-    "nom": "Scissors",
-    "location": "",
-    "size": "small",
-    "is_container": true,
-    "is_movable": true,
-    "states": [
-        ["clean", "stained"],
-        ["open", "close"]
-    ],
-    "initial_state": [
-        "clean",
-        "closed"
-    ],
-    "actions-object": [
-        {
-            "name": "cut",
-            "modifer": "body",
-            "clean": "stained",
-            "otherwise": "none"
-        },
-        {
-            "name": "stab",
-            "clean": "stained",
-            "otehrwise": "none"
-        }
-    ],
-    "actions-received": [
-        {
-            "name": "clean",
-            "stained": "clean",
-            "otherwise": "none"
-        }
-    ]
-}]
+{
+    "objects": [{
+        "nom": "Scissors",
+        "location": "",
+        "size": "small",
+        "is_container": true,
+        "is_movable": true,
+        "states": [
+            ["clean", "stained"],
+            ["open", "close"]
+        ],
+        "initial_state": [
+            "clean",
+            "closed"
+        ],
+        "actions-object": [
+            {
+                "name": "cut",
+                "modifer": "body",
+                "clean": "stained",
+                "otherwise": "none"
+            },
+            {
+                "name": "stab",
+                "clean": "stained",
+                "otehrwise": "none"
+            }
+        ],
+        "actions-received": [
+            {
+                "name": "clean",
+                "stained": "clean",
+                "otherwise": "none"
+            }
+        ]
+    },
+    {
+        "nom": "LAMO",
+        "location": "",
+        "size": "small",
+        "is_container": true,
+        "is_movable": true,
+        "states": [
+            ["clean", "stained"],
+            ["open", "close"]
+        ],
+        "initial_state": [
+            "clean",
+            "closed"
+        ],
+        "actions-object": [
+            {
+                "name": "cut",
+                "modifer": "body",
+                "clean": "stained",
+                "otherwise": "none"
+            },
+            {
+                "name": "stab",
+                "clean": "stained",
+                "otehrwise": "none"
+            }
+        ],
+        "actions-received": [
+            {
+                "name": "clean",
+                "stained": "clean",
+                "otherwise": "none"
+            }
+        ]
+    }]
+}
