@@ -38,7 +38,7 @@
             "shot": [3, 3, 1, -1],
             "stabbed-shot": [4, 2, 1, -1],
             "hit": [4, 1, 4, -1],
-            "poisoned": [2, 4, 3, -1]
+            "poisoned": [2, 4, 3, -1],
             "multipliers": {
                 "inroom1": [2, 1, 1, 1, 1],
                 "inroom2": [1, 1, 1, 1, 1],
