@@ -13,7 +13,7 @@ Object::Object(const rapidjson::GenericValue<rapidjson::UTF8<> >* d)
     const rapidjson::Value& states = (*d)["states"];
     for (rapidjson::Value::ConstValueIterator itr = states.Begin(); itr != states.End(); ++itr) {
         for (rapidjson::Value::ConstValueIterator itr2 = itr->Begin(); itr2 != itr->End(); ++itr2) {
-            std::cout << (*itr2).GetString() << std::endl;
+            possibleStates.push_back((*itr2).GetString());
         }
     }
     
@@ -54,7 +54,7 @@ void Object::setInitStates(std::vector<std::string> ei) {
 	initStates = ei;
 }
 
-void Object::setPossibleStates(std::vector<std::vector<std::string> > ps) {
+void Object::setPossibleStates(std::vector<std::string> ps) {
 	possibleStates = ps;
 }
 

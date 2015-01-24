@@ -23,7 +23,8 @@ void GJ2015::init() {
     }
 }
 
-bool GJ2015::parseObjectsFile() {
+bool GJ2015::parseObjectsFile()
+{
     std::ifstream file("Objects.json");
     file.seekg(0, std::ios::end);
     std::streamsize size = file.tellg();

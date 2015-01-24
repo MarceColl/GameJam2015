@@ -48,7 +48,7 @@ public:
     std::string objectName;
 
     std::vector<std::string> initStates;
-    std::vector<std::vector<std::string> > possibleStates;
+    std::vector<std::string> possibleStates;
 
     std::map<std::string, DoesInteract> interactionsAvailable;
     std::map<std::string, RecievesInteract> interactionsRecievable;
@@ -64,7 +64,7 @@ public:
     void setIsContainer(bool isCont);
     void setIsMovable(bool isMov);
     void setInitStates(std::vector<std::string> ei);
-    void setPossibleStates(std::vector<std::vector<std::string> > ps);
+    void setPossibleStates(std::vector<std::string> ps);
 
     void addInteraction(DoesInteract di);
     void addInteraction(RecievesInteract ri);
