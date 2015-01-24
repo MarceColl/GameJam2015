@@ -26,15 +26,15 @@ void Judge::evaluarCrim(){
 		Objecte* item=it*;
 		
 		//evaluar objecte
-		if(it->objectName!="body"){
 			
 			
 			
 		
 		//onBody=GJ2015.isObjectOnBody(object*)
 		//onCharacter=GJ2015.isObjectOnCharacter(object*)
-		
-		
+		if(it->objectName=="body"){
+			desaparegut=onCharacter;
+		}
 		
 			int punts [6] = item->evaluarObjecte(onBody,onCharacter);//HOMICIDI SUICIDI ACCIDENT FUGA INCRIMINAR
 			
@@ -53,7 +53,7 @@ void Judge::evaluarCrim(){
 			puntsIncriminar=puntsIncriminar+punts[5];
 		
 		
-		}
+		
 		
 	}
 	
