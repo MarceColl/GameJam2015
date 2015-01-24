@@ -25,6 +25,21 @@ struct RecievesInteract{
     std::vector<StateChange> canvisEstat;
 };
 
+struct EvalValues {
+    double murder;
+    double suicide;
+    double accident;
+    double disappearance;
+};
+
+struct MultipliersValues {
+    double protagonistImplication;
+    double neighborImplication;
+    double suicide;
+    double accident;
+    double disappearance;
+};
+
 class GJ2015;
 class Object
 {
@@ -53,6 +68,9 @@ public:
 
     std::map<std::string, DoesInteract> interactionsAvailable;
     std::map<std::string, RecievesInteract> interactionsRecievable;
+
+    std::map<std::string, EvalValues> evalValues;
+    std::map<std::string, MultipliersValues> multipliersValues;
 
     void draw();
 

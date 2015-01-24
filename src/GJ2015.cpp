@@ -34,7 +34,6 @@ bool GJ2015::parseObjectsFile()
     buffer[size] = '\0';
     if (file.read(buffer, size))
     {
-        std::cout << buffer << std::endl;
         rapidjson::Document d;
         d.Parse(buffer);
 

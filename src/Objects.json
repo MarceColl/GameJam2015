@@ -1,5 +1,6 @@
 {
     "objects": [{
+        "id": 1,
         "nom": "body",
         "location": "",
         "size": "big",
@@ -33,12 +34,12 @@
             }
         ],
         "evaluation": {
-            "chopped": [6, -6, -6, -6],
-            "stabbed": [4, 2, 1, -1],
-            "shot": [3, 3, 1, -1],
+            "chopped":      [6, -6, -6, -6],
+            "stabbed":      [4, 2, 1, -1],
+            "shot":         [3, 3, 1, -1],
             "stabbed-shot": [4, 2, 1, -1],
-            "hit": [4, 1, 4, -1],
-            "poisoned": [2, 4, 3, -1],
+            "hit":          [4, 1, 4, -1],
+            "poisoned":     [2, 4, 3, -1],
             "multipliers": {
                 "inroom1": [2, 1, 1, 1, 1],
                 "inroom2": [1, 1, 1, 1, 1],
@@ -49,6 +50,7 @@
         }
     },
     {
+        "id": 2,
         "nom": "Scissors",
         "location": "",
         "size": "small",
@@ -93,6 +95,7 @@
         }
     },
     {
+        "id": 3,
         "nom": "Bag",
         "location": "",
         "size": "big",
@@ -130,6 +133,7 @@
         }
     },
     {
+        "id": 4,
         "nom": "Drugs",
         "location": "",
         "size": "small",
