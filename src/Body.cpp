@@ -96,6 +96,10 @@ void doesBodyMatter(){
 
 	return true;
 
+}
+
+void assignarFinalState(){
+
 
 
 }

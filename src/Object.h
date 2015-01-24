@@ -7,7 +7,7 @@
 #include "include/rapidjson/document.h"
 #include <SFML/Graphics.hpp>
 
-enum Size { SMALL, BIG };
+enum Size { BIG, SMALL };
 
 struct StateChange{
     std::string initState;
@@ -29,7 +29,7 @@ class GJ2015;
 class Object
 {
 public:
-    Object(const rapidjson::GenericValue<rapidjson::UTF8<> >**);
+    Object(const rapidjson::GenericValue<rapidjson::UTF8<> >* d);
 
     sf::Vector2f position;
     sf::Vector2f size;
