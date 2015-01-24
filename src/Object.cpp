@@ -1,13 +1,16 @@
 #include "Object.h"
 #include <SFML/Graphics.hpp>
 
-Object::Object(const rapidjson::GenericValue<rapidjson::UTF8<> >** d)
+Object::Object(const rapidjson::GenericValue<rapidjson::UTF8<> >* d)
 {
+    std::cout << "OBJECT, YO!" << std::endl;
     // POINTER HAXURS
-    objectName = (**d)["name"].GetString();
-    objectSize = (**d)["size"].GetString() == "small" ? SMALL : BIG;
-    isContainer = (**d)["is_container"].GetBool();
-    isMovable = (**d)["is_movable"].GetBool();
+    objectName = (*d)["nom"].GetString();
+    objectSize = (*d)["size"].GetString() == "small" ? SMALL : BIG;
+    isContainer = (*d)["is_container"].GetBool();
+    isMovable = (*d)["is_movable"].GetBool();
+
+    std::cout << objectName << std::endl << objectSize << std::endl << isContainer << std::endl << isMovable << std::endl;
 }
 
 void Object::setPosition(sf::Vector2f pos) {
@@ -55,5 +58,22 @@ bool Object::canInteractWithAction(std::string act) {
 }
 
 void Object::applyInteraction(std::string action) {
+
+    /*RecievesInteract act = interactionsRecievable.get(action);
+	
+	std::vector<StateChange> modificacions= act.canvisEstat;
+	
+	for (std::vector<StateChange>::iterator it = modificacions.begin(); it != modificacions.end(); ++it){
+		std::string initS=it->initState;
+		if(initStates.contains(initS)){
+			for (std::vector<std::string>::iterator iter = initStates.begin(); iter != initStates.end(); ++iter){
+				if(*iter==initS){
+					*iter=(it->finalState);
+					break;
+				}
+			}
+		}
+	}*/
+	
 }
 

@@ -6,8 +6,9 @@
 #include "include/SFML/Graphics.hpp"
 
 GJ2015::GJ2015(int scrwidth, int scrheight, std::string title, int style)
-    : Game(scrwidth,scrheight,title,style) {
+    : Game(scrwidth, scrheight, title, style) {
     srand (time(NULL));
+    init();
 }
 
 GJ2015::~GJ2015() {}
@@ -35,8 +36,9 @@ bool GJ2015::parseObjectsFile() {
         d.Parse(buffer);
 
         const rapidjson::Value& objectsJSON = d["objects"];
+        
         for (rapidjson::Value::ConstValueIterator itr = objectsJSON.Begin(); itr != objectsJSON.End(); ++itr) {
-            Object* ob = new Object(&itr);
+            Object* ob = new Object(itr);
             objects.push_back(ob);
         }
     }
@@ -58,6 +60,16 @@ void GJ2015::draw(){
 
 }
 
-void GJ2015::processEvents(){
+void GJ2015::processEvents() {
+    sf::Event event;
+    while (window.pollEvent(event)) {
+        switch (event.type) {
+        case sf::Event::Closed:
+            window.close();
+            break;
+        default:
+            break;
+        }
+    }
 }
 

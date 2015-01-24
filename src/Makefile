@@ -1,15 +1,19 @@
 
-all: GJ2015 Object Game 
-	gcc-4.9 Game.o GJ2015.o Object.o -o GJ2015
+CC=g++
+LIBS=-lsfml-graphics -lsfml-window -lsfml-system
 
-Game: Game.h Game.cpp
-	gcc-4.9 -c Game.cpp
+all: GJ2015.o Object.o Game.o main.cpp
+	$(CC) main.cpp Game.o GJ2015.o Object.o -o GJ2015 $(LIBS)
 
-GJ2015: GJ2015.h GJ2015.cpp
-	gcc-4.9 -c GJ2015.cpp
+Game: Game.cpp
+	$(CC) -c Game.cpp -o Game.o
 
-Object: Object.h Object.cpp
-	gcc-4.9 -c Object.cpp
+GJ2015: GJ2015.cpp
+	$(CC) -c GJ2015.cpp -o GJ2015.o
+
+Object: Object.cpp
+	$(CC) -c Object.cpp -o Object.o
 
 clean:
 	rm *.o
+	rm GJ2015
