@@ -3,6 +3,7 @@
 Body::Body(const rapidjson::GenericValue<rapidjson::UTF8<> >**){
 	
 	InitialState init;
+	desaparegut=false;
 	
 	
 	
@@ -16,7 +17,7 @@ Body::Body(const rapidjson::GenericValue<rapidjson::UTF8<> >**){
 
 bool doesKillMatter(){
 	
-	if(eInicial==eFinal || eFinal==FinalState.FS_DESAPAREGUT){
+	if(eInicial==eFinal||desaparegut){
 		return false;
 	}
 	
@@ -93,8 +94,8 @@ void doesBodyMatter(){
 		}
 	
 	}
-
-	return true;
+	
+	return !desaparegut;
 
 }
 
