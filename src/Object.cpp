@@ -149,4 +149,5 @@ void Object::applyInteraction(std::string action) {
 		}
 	}
 }
-
+	
+	

@@ -6,7 +6,6 @@ Judge::Judge(Body b){
 	puntsSuicidi=0;
 	puntsAccident=0;
 	puntsFuga=0;
-	puntsIncriminar=0;
 	body=b;
 }
 
@@ -34,10 +33,10 @@ void Judge::evaluarCrim(){
 			desaparegut=onCharacter;
 		}
 		
-		int punts [6] = item->evaluarObjecte(onCorpse,onCharacter);//HOMICIDI SUICIDI ACCIDENT FUGA INCRIMINAR
+		GameEvaler punts = item->evaluarObjecte(onCorpse,onCharacter);//HOMICIDI SUICIDI ACCIDENT FUGA INCRIMINAR
 		
-		puntsHomicidiJo=puntsHomicidiJo+punts[0];
-		puntsHomicidiIncrim=puntsHomicidiIncrim+punts[0];
+		puntsHomicidiJo=puntsHomicidiJo+punts.puntsHomicidiJo;
+		puntsHomicidiIncrim=puntsHomicidiIncrim+punts.puntsHomicidiIncrim;
 		if(puntsHomicidiIncrim<puntsHomicidiJo){
 			puntsHomicidi=puntsHomicidiJo;
 			incriminat=false;
@@ -45,11 +44,11 @@ void Judge::evaluarCrim(){
 			puntsHomicidi=puntsHomicidiIncrim;
 			incriminat=true;			
 		}
-		puntsSuicidi=puntsSuicidi+punts[2];
-		puntsAccident=puntsAccident+punts[3];
-		puntsFuga=puntsFuga+punts[4];
+		puntsSuicidi=puntsSuicidi+punts.puntsSuicidi;
+		puntsAccident=puntsAccident+punts.puntsAccident;
+		puntsFuga=puntsFuga+punts.puntsFuga;
 		
-		puntsIncriminar=puntsIncriminar+punts[5];
+		puntsIncriminar=puntsIncriminar+punts.puntsIncriminar;
 		
 	}
 	
