@@ -10,6 +10,14 @@ Object::Object(const rapidjson::GenericValue<rapidjson::UTF8<> >* d)
     isContainer = (*d)["is_container"].GetBool();
     isMovable = (*d)["is_movable"].GetBool();
 
+    const rapidjson::Value& states = (*d)["states"];
+    for (rapidjson::Value::ConstValueIterator itr = states.Begin(); itr != states.End(); ++itr) {
+        for (rapidjson::Value::ConstValueIterator itr2 = itr->Begin(); itr2 != itr->End(); ++itr2) {
+            std::cout << (*itr2).GetString() << std::endl;
+        }
+    }
+    
+
     std::cout << objectName << std::endl << objectSize << std::endl << isContainer << std::endl << isMovable << std::endl;
 }
 
@@ -58,20 +66,20 @@ bool Object::canInteractWithAction(std::string act) {
 }
 
 void Object::applyInteraction(std::string action) {
-RecievesInteract act = interactionsRecievable.get(action);
+    RecievesInteract act = interactionsRecievable[action];
 	
 	std::vector<StateChange> modificacions= act.canvisEstat;
 	
 	for (std::vector<StateChange>::iterator it = modificacions.begin(); it != modificacions.end(); ++it){
 		std::string initS=it->initState;
-		if(initStates.contains(initS)){
+		/*if(initStates.contains(initS)){
 			for (std::vector<std::string>::iterator iter = initStates.begin(); iter != initStates.end(); ++iter){
 				if(*iter==initS){
 					*iter=(it->finalState);
 					break;
 				}
 			}
-		}
+		}*/
 	}
 }
 
