@@ -11,8 +11,6 @@
         "initial_state": [
             "normal"
         ],
-        "actions-object": [
-        ],
         "actions-received": [
             {
                 "name": "cut",
@@ -50,7 +48,7 @@
         "actions-object": [
             {
                 "name": "cut",
-                "modifer": "body",
+                "modifier": "body",
                 "clean": "stained",
                 "otherwise": "none"
             },
@@ -83,14 +81,14 @@
         "actions-object": [
             {
                 "name": "fill",
-                "modifer": "body",
+                "modifier": "body",
                 "empty": "full",
                 "otherwise": "none"
             },
             {
                 "name": "empty",
                 "full": "empty",
-                "otehrwise": "none"
+                "otherwise": "none"
             }
         ],
         "actions-received": [
@@ -112,10 +110,12 @@
             {
                 "name": "empty",
                 "full": "empty",
-                "otehrwise": "none"
+                "otherwise": "none"
             }
         ],
         "actions-received": [
         ]
     }]
 }
+
+
