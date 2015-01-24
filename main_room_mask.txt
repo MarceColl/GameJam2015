@@ -1,0 +1,15 @@
+0000FF: sofa
+00FF00: porta esquerra
+00FFFF: porta dreta
+FF0000: porta fons
+FF00FF: taula
+FFFF00: tv
+FFFFFF: cuina
+11AA00: llums
+FFAA00: ventilador
+BBAA00: ampolla aigua
+BB00FF: armari dreta
+FFAABB: cadires
+BBBBBB: armari esquerra
+AAFFAA: caixa esquerra
+
