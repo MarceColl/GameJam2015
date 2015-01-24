@@ -11,8 +11,6 @@
         "initial_state": [
             "normal"
         ],
-        "actions-object": [
-        ],
         "actions-received": [
             {
                 "name": "cut",
@@ -33,7 +31,22 @@
                 "stabbed-shot": "stabbed-shot",
                 "otherwise": "poisoned"
             }
-        ]
+        ],
+        "evaluation": {
+            "chopped": [6, -6, -6, -6],
+            "stabbed": [4, 2, 1, -1],
+            "shot": [3, 3, 1, -1],
+            "stabbed-shot": [4, 2, 1, -1],
+            "hit": [4, 1, 4, -1],
+            "poisoned": [2, 4, 3, -1]
+            "multipliers": {
+                "inroom1": [2, 1, 1, 1, 1],
+                "inroom2": [1, 1, 1, 1, 1],
+                "inroom3": [1, 2, 1, 1, 1],
+                "inbody":  [2, 2, 1, 1, 1],
+                "inplayer":[0, 0, 0, 0, 0]
+            }
+        }
     },
     {
         "nom": "Scissors",
@@ -50,7 +63,7 @@
         "actions-object": [
             {
                 "name": "cut",
-                "modifer": "body",
+                "modifier": "body",
                 "clean": "stained",
                 "otherwise": "none"
             },
@@ -66,7 +79,18 @@
                 "stained": "clean",
                 "otherwise": "none"
             }
-        ]
+        ],
+        "evaluation": {
+            "stained": [4, 2, 1, -1],
+            "clean":   [0, 0, 0, 0],
+            "multipliers": {
+                "inroom1": [2, 1, 1, 1, 1],
+                "inroom2": [1, 1, 1, 1, 1],
+                "inroom3": [1, 2, 1, 1, 1],
+                "inbody":  [2, 2, 1, 1, 1],
+                "inplayer":[0, 0, 0, 0, 0]
+            }
+        }
     },
     {
         "nom": "Bag",
@@ -83,18 +107,27 @@
         "actions-object": [
             {
                 "name": "fill",
-                "modifer": "body",
+                "modifier": "body",
                 "empty": "full",
                 "otherwise": "none"
             },
             {
                 "name": "empty",
                 "full": "empty",
-                "otehrwise": "none"
+                "otherwise": "none"
             }
         ],
-        "actions-received": [
-        ]
+        "evaluation": {
+            "empty": [0, 0, 0, 0],
+            "full":  [4, -4, -4, -4],
+            "multipliers": {
+                "inroom1": [4, 3, 1, 1, 1],
+                "inroom2": [3, 3, 1, 1, 1],
+                "inroom3": [3, 4, 1, 1, 1],
+                "inbody":  [1, 1, 1, 1, 1],
+                "inplayer":[0, 0, 0, 0, -0.5]
+            }
+        }
     },
     {
         "nom": "Drugs",
@@ -112,10 +145,19 @@
             {
                 "name": "empty",
                 "full": "empty",
-                "otehrwise": "none"
+                "otherwise": "none"
             }
         ],
-        "actions-received": [
-        ]
+        "evaluation": {
+            "empty": [2, 4, 2, 0],
+            "full":  [0, 0, 0, 0],
+            "multipliers": {
+                "inroom1": [1, 1, 1, 1, 1],
+                "inroom2": [1, 1, 1, 1, 1],
+                "inroom3": [1, 1, 1, 1, 1],
+                "inbody":  [1.5, 1.5, 2, 1, 1],
+                "inplayer":[0, 0, 0, 0, 0]
+            }
+        }
     }]
 }

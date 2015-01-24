@@ -3,13 +3,13 @@
 
 Object::Object(const rapidjson::GenericValue<rapidjson::UTF8<> >* d)
 {
-    std::cout << "OBJECT, YO!" << std::endl;
     // POINTER HAXURS
     objectName = (*d)["nom"].GetString();
     objectSize = (*d)["size"].GetString() == "small" ? SMALL : BIG;
     isContainer = (*d)["is_container"].GetBool();
     isMovable = (*d)["is_movable"].GetBool();
 
+    // PARSE STATES
     const rapidjson::Value& states = (*d)["states"];
     for (rapidjson::Value::ConstValueIterator itr = states.Begin(); itr != states.End(); ++itr) {
         for (rapidjson::Value::ConstValueIterator itr2 = itr->Begin(); itr2 != itr->End(); ++itr2) {
@@ -17,13 +17,73 @@ Object::Object(const rapidjson::GenericValue<rapidjson::UTF8<> >* d)
         }
     }
     
-    const rapidjson::Value& actions_object = (*d)["actions-object"];
-    for (rapidjson::Value::ConstValueIterator itr = actions_object.Begin(); itr != actions_object.End(); ++itr) {
-        rapidjson::Value::ConstMemberIterator cmi = (*itr).FindMember("")
+    // PARSE ACTIONS-OBJECT
+    rapidjson::Value::ConstMemberIterator actions_object = (*d).FindMember("actions-object");
+    if (actions_object != (*d).MemberEnd()) {
+        for (rapidjson::Value::ConstValueIterator itr = (*actions_object).value.Begin(); itr != (*actions_object).value.End(); ++itr) {
+            DoesInteract ds;
 
+            rapidjson::Value::ConstMemberIterator cmi = (*itr).FindMember("name");
+            rapidjson::Value::ConstMemberIterator continueFrom = cmi;
+
+            if (cmi != (*itr).MemberEnd()) {
+                ds.name = (*cmi).value.GetString();
+            } else {
+                std::cerr << "Object action without name!" << std::endl;
+            }
+
+            cmi = (*itr).FindMember("modifier");
+            if (cmi != (*itr).MemberEnd()) {
+                ds.objectModif = (*cmi).value.GetString();
+                continueFrom = cmi;
+            } else {
+                ds.objectModif = "";
+            }
+
+            continueFrom++;
+
+            for (rapidjson::Value::ConstMemberIterator itr2 = continueFrom; itr2 != itr->MemberEnd(); ++itr2) {
+                if(!strncmp(itr2->name.GetString(), "otherwise", 9)) {
+                    StateChange sc;
+                    sc.initState = itr2->name.GetString();
+                    sc.finalState = itr2->value.GetString();
+                    ds.stateChanged.push_back(sc);
+                }
+            }
+
+            addInteraction(ds);
+        }
     }
 
-    std::cout << objectName << std::endl << objectSize << std::endl << isContainer << std::endl << isMovable << std::endl;
+    // PARSE ACTIONS-RECEIVED
+    rapidjson::Value::ConstMemberIterator actions_received = (*d).FindMember("actions-received");
+    if (actions_received != (*d).MemberEnd()) {
+        for (rapidjson::Value::ConstValueIterator itr = (*actions_received).value.Begin(); itr != (*actions_received).value.End(); ++itr) {
+            RecievesInteract rs;
+
+            rapidjson::Value::ConstMemberIterator cmi = (*itr).FindMember("name");
+            rapidjson::Value::ConstMemberIterator continueFrom = cmi;
+
+            if (cmi != (*itr).MemberEnd()) {
+                rs.name = (*cmi).value.GetString();
+            } else {
+                std::cerr << "Object action without name!" << std::endl;
+            }
+
+            continueFrom++;
+
+            for (rapidjson::Value::ConstMemberIterator itr2 = continueFrom; itr2 != itr->MemberEnd(); ++itr2) {
+                if(!strncmp(itr2->name.GetString(), "otherwise", 9)) {
+                    StateChange sc;
+                    sc.initState = itr2->name.GetString();
+                    sc.finalState = itr2->value.GetString();
+                    rs.canvisEstat.push_back(sc);
+                }
+            }
+
+            addInteraction(rs);
+        }
+    }
 }
 
 void Object::setPosition(sf::Vector2f pos) {
@@ -74,7 +134,7 @@ void Object::applyInteraction(std::string action) {
     RecievesInteract act = interactionsRecievable[action];
 	std::vector<StateChange> modificacions = act.canvisEstat;
 	for (std::vector<StateChange>::iterator it = modificacions.begin(); it != modificacions.end(); ++it){
-		std::string initS=it->initState;
+		std::string initS = it->initState;
 		for (std::vector<std::string>::iterator iter = initStates.begin(); iter != initStates.end(); ++iter){
 			if(*iter==initS){
 				*iter=(it->finalState);
