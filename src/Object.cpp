@@ -58,6 +58,20 @@ bool Object::canInteractWithAction(std::string act) {
 }
 
 void Object::applyInteraction(std::string action) {
-
+RecievesInteract act = interactionsRecievable.get(action);
+	
+	std::vector<StateChange> modificacions= act.canvisEstat;
+	
+	for (std::vector<StateChange>::iterator it = modificacions.begin(); it != modificacions.end(); ++it){
+		std::string initS=it->initState;
+		if(initStates.contains(initS)){
+			for (std::vector<std::string>::iterator iter = initStates.begin(); iter != initStates.end(); ++iter){
+				if(*iter==initS){
+					*iter=(it->finalState);
+					break;
+				}
+			}
+		}
+	}
 }
 
