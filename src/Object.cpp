@@ -11,6 +11,11 @@ Object::Object(const rapidjson::GenericValue<rapidjson::UTF8<> >* d)
     isMovable = (*d)["is_movable"].GetBool();
 
     const rapidjson::Value& states = (*d)["states"];
+    for (rapidjson::Value::ConstValueIterator itr = states.Begin(); itr != states.End(); ++itr) {
+        for (rapidjson::Value::ConstValueIterator itr2 = itr->Begin(); itr2 != itr->End(); ++itr2) {
+            std::cout << (*itr2).GetString() << std::endl;
+        }
+    }
     
 
     std::cout << objectName << std::endl << objectSize << std::endl << isContainer << std::endl << isMovable << std::endl;
