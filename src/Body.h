@@ -18,6 +18,8 @@ public:
 	
 	InitialState eInicial;
 	
+	bool desaparegut;
+	
 	FinalState eFinal;
 	
 	BodyState eCos;
