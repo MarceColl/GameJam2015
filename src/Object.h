@@ -43,6 +43,7 @@ public:
     bool isContainer;
     bool isMovable;
     bool inObject;
+	
     
     std::string locationInObject;
     std::string objectName;
