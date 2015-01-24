@@ -2,6 +2,8 @@
     "objects": [{
         "id": 1,
         "nom": "body",
+        "room": 1,
+        "inside": 0,
         "location": "",
         "size": "big",
         "is_container": true,

@@ -2,14 +2,21 @@
 #include "Object.h"
 #include "Body.h"
 #include <fstream>
+#include "Resources.h"
 
 #include "include/rapidjson/document.h"
 #include "include/SFML/Graphics.hpp"
+#include "include/SFML/Window.hpp"
+#include "include/SFML/System.hpp"
+
+const double TIMER_START = 60 * 5;
 
 GJ2015::GJ2015(int scrwidth, int scrheight, std::string title, int style)
-    : Game(scrwidth, scrheight, title, style) {
+    :   Game(scrwidth, scrheight, title, style), 
+        env(&window) {
     srand (time(NULL));
     init();
+    timer = TIMER_START;
 }
 
 GJ2015::~GJ2015() {}
@@ -60,12 +67,19 @@ bool GJ2015::parseObjectsFile()
     return true;
 }
 
-void GJ2015::update(float deltaTime){
-
+void GJ2015::update(float deltaTime) {
+    timer -= deltaTime;
 }
 
-void GJ2015::draw(){
-
+void GJ2015::draw() {
+    env.draw();
+    sf::Text text;
+    text.setFont(Resources::menuFont);
+    text.setString(std::to_string(timer));
+    window.draw(text);
+    /*for(std::list<Object*>::iterator it = objects.begin(); it != objects.end(); ++it) {
+        (*it)->draw();
+    }*/
 }
 
 void GJ2015::processEvents() {

@@ -3,6 +3,7 @@
 #include "Game.h"
 #include "Object.h"
 #include "Body.h"
+#include "Environment.h"
 #include <string>
 #include <list>
 
@@ -19,8 +20,11 @@ public:
     void processEvents();
 private:
     std::list<Object*> objects;
-
     Body* body;
+
+    float timer;
+
+    Environment env;
 
     bool parseObjectsFile();
 };
