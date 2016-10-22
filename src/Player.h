@@ -31,8 +31,8 @@ private:
     sf::Texture& texture;
     sf::Sprite   sprite;
 
-    sf::Vector2i spriteCount;
     sf::Vector2i spriteNum;
+    sf::Vector2i spriteCount;
 };
 
 #endif
